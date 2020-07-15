@@ -103,4 +103,8 @@
     .b-slider-track {
         border: 1px solid white !important;
     }
+
+    .label {
+        color: inherit;
+    }
 </style>
