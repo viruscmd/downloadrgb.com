@@ -1,4 +1,5 @@
-# nuxt-dummy
+# DOWNLOADRGB.COM
+For when you just need more RGB
 
 ## Build Setup
 
