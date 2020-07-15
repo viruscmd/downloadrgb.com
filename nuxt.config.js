@@ -25,7 +25,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
-      { src: 'https://gist.githubusercontent.com/viruscmd/cdf5d340a4a6c7338fac62c22ecec8c6/raw/downloadrgb.mga.min.js' }
+      { src: '/downloadrgb.mga.min.js' }
     ],
   },
   /*
