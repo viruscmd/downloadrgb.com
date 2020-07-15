@@ -1,25 +1,19 @@
 <template>
     <section :style="rgb" style="height: 100vh;overflow-y: scroll;">
-        <nav class="navbar header has-shadow is-transparent"
+        <nav class="navbar header has-shadow is-transparent hast-text-centered"
              role="navigation"
              aria-label="main navigation"
-             style='background: transparent; box-shadow: none'
+             style='background: transparent; box-shadow: none;border-bottom: 1px solid rgba(255,255,255,0.25)'
         >
 
-            <div class="navbar-brand">
+            <div class="navbar-item">
                 <a
-                        class="navbar-item"
+                        class="navbar-item title has-text-centered"
                         href="/"
                         :style="rgb"
                 >
                     Download RGB
                 </a>
-
-                <div class="navbar-burger">
-                    <span/>
-                    <span/>
-                    <span/>
-                </div>
             </div>
         </nav>
 
@@ -106,5 +100,15 @@
 
     .label {
         color: inherit;
+    }
+
+    .navbar .navbar-item {
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+
+    .navbar .navbar-item a{
+        text-align: center !important;
     }
 </style>
