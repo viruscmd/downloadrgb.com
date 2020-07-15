@@ -29,15 +29,15 @@
             </div>
 
             <b-field label="Red">
-                <b-slider :min="0" :max="255" type="is-danger" v-model="red" :lazy="isLazy"></b-slider>
+                <b-slider size="is-large" :min="0" :max="255" type="is-danger" v-model="red" :lazy="isLazy"></b-slider>
             </b-field>
 
             <b-field label="Green">
-                <b-slider :min="0" :max="255" type="is-success" v-model="green" :lazy="isLazy"></b-slider>
+                <b-slider size="is-large" :min="0" :max="255" type="is-success" v-model="green" :lazy="isLazy"></b-slider>
             </b-field>
 
             <b-field label="Blue">
-                <b-slider :min="0" :max="255" type="is-info" v-model="blue" :lazy="isLazy"></b-slider>
+                <b-slider size="is-large" :min="0" :max="255" type="is-info" v-model="blue" :lazy="isLazy"></b-slider>
             </b-field>
 
             <b-field label="Lazy update colors">
