@@ -1,5 +1,5 @@
 <template>
-    <section :style="rgb" style="height: 100vh;overflow-y: scroll;">
+    <section :style="rgbStyle" style="height: 100vh;overflow-y: scroll;">
         <nav class="navbar header has-shadow is-transparent hast-text-centered"
              role="navigation"
              aria-label="main navigation"
@@ -10,7 +10,7 @@
                 <a
                         class="navbar-item title has-text-centered"
                         href="/"
-                        :style="rgb"
+                        :style="rgbStyle"
                 >
                     Download RGB
                 </a>
@@ -18,8 +18,11 @@
         </nav>
 
         <div class="container" style='display: grid; place-items: center;'>
-            <div class="is-size-4 has-text-centered" style="height: 150px; display: grid; place-items: center">
-                rgb({{red}},{{green}},{{blue}})
+            <div class="is-size-3 has-text-centered" style="height: 150px; display: grid; place-items: center">
+
+                <b-tooltip label="click to copy">
+                    <span @click.stop.prevent="copyColor">{{rgbValue}}</span>
+                </b-tooltip>
             </div>
 
             <b-field label="Red">
@@ -39,6 +42,8 @@
             </b-field>
         </div>
 
+        <input type="hidden" :value="rgbValue" id="copyThis">
+
     </section>
 </template>
 
@@ -51,16 +56,43 @@
                 red: 21,
                 green: 123,
                 blue: 234,
-                isLazy: true,
+                isLazy: false,
             }
         },
         computed: {
-            rgb() {
+            rgbValue() {
+                return `rgb(${this.red},${this.green},${this.blue})`
+            },
+            rgbStyle() {
                 return {
                     background: `rgb(${this.red},${this.green},${this.blue})`,
                     color: `${invertColor(this.red, this.green, this.blue)} !important`,
                 }
             }
+        },
+        methods: {
+            copyColor () {
+                let textToCopy = document.querySelector('#copyThis');
+                textToCopy.setAttribute('type', 'text');
+                textToCopy.select();
+
+                try {
+                    document.execCommand('copy');
+                    this.$buefy.toast.open({
+                        message: 'Copied',
+                        type: 'is-success'
+                    });
+                } catch (err) {
+                    this.$buefy.toast.open({
+                        message: 'Oops, unable to copy!',
+                        type: 'is-danger'
+                    });
+                }
+
+                /* unselect the range */
+                textToCopy.setAttribute('type', 'hidden');
+                window.getSelection().removeAllRanges();
+            },
         },
         mounted() {
             this.red = randomInt255();
